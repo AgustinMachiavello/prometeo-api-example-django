@@ -34,7 +34,7 @@ SECRET_KEY = '5%b7)f8u)%=59#9xre8n9h8$2^6^9_w^(+6i1#55mthhg7pygc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # TODO
 
 
 # Application definition

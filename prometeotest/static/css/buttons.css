@@ -15,3 +15,45 @@
     padding-right: 1.1rem;
     padding-left: 1.1rem;
 }
+
+form button {
+    display: block;
+    width: 100%;
+}
+
+form button+button {
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+
+/* xs and down */
+@media screen and (max-width: 576px) {
+
+}
+
+/* sm and up*/
+@media screen and (min-width: 576px) {
+
+}
+
+/* md and up*/
+@media screen and (min-width: 768px) {
+
+}
+
+/* lg and up*/
+@media screen and (min-width: 992px) {
+    form button {
+        display: inline;
+        width: unset;
+    }
+    
+    form button+button {
+        margin-top: unset;
+    }
+}
+
+/* xl and up*/
+@media screen and (min-width: 1200px) {
+}

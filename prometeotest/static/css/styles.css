@@ -1,0 +1,27 @@
+
+
+/* Responsive */
+
+/* xs and down */
+@media screen and (max-width: 576px) {
+
+}
+
+/* sm and up*/
+@media screen and (min-width: 576px) {
+
+}
+
+/* md and up*/
+@media screen and (min-width: 768px) {
+
+}
+
+/* lg and up*/
+@media screen and (min-width: 992px) {
+    
+}
+
+/* xl and up*/
+@media screen and (min-width: 1200px) {
+}

@@ -4,25 +4,27 @@
 
 {% block content %}
 <div class="container-fluid vh-100 bg-abstract-1 p-5">
-  <div class="login-form-wrapper d-flex h-100 align-content-center justify-content-center bg-white rounded shadow">
-    <div class="col">
-      <form class="p-5" method="POST" id="login-form" action="{% url 'api:login' %}">
+  <div class="row login-form-container h-100 bg-white rounded shadow">
+    <div class="col d-flex flex-column justify-content-center">
+      <!-- Logo and title -->
+      <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-end px-4">
+        <img class="mb-5 mb-sm-0" src="{% static 'img/prometeo-logo-1.svg' %}" alt="prometeo minimalistic logo" height="100px">
+        <h1 class="font-semi-large font-bold d-none d-md-block">Prometeo</h1>
+      </div>
+      <!-- Form -->
+      <form class="p-0 p-md-5" method="POST" id="login-form" action="{% url 'api:login' %}">
         {% csrf_token %}
-        <div class="d-flex flex-row align-items-end py-5 mx-n3">
-          <img src="{% static 'img/prometeo-logo-1.svg' %}" alt="prometeo minimalistic logo" height="100px">
-          <h1 class="font-semi-large font-bold">Prometeo</h1>
+        <div class="form-group">
+          <label class="" for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+          <!-- small id="emailHelp" class="form-text text-muted">Your email :)</small -->
         </div>
         <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-            <!-- small id="emailHelp" class="form-text text-muted">Your email :)</small -->
-          </div>
-          <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-light-red">Login</button>
-          <button type="submit" class="btn btn-light-red">Sign up</button>
+          <label class="" for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-light-red">Login</button>
+        <button type="submit" class="btn btn-light-red">Sign up</button>
       </form>
     </div>
     <div class="col d-none d-lg-flex flex-column justify-content-center bg-abstract-2 bg-light-red text-white">
