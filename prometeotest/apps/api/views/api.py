@@ -3,7 +3,7 @@ API Views
 """
 
 # DJango
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 
 # Django REST Framework
 
@@ -42,7 +42,7 @@ class LoginAPIView(APIView):
         response_json = json.loads(response.text)
         # TODO if response.text['status'] ==  ....
         request.session['session_key'] = response_json['key'] # TODO 
-        return HttpResponse(response.text)
+        return Response(response_json)
 
 
 class GetUser(APIView):
@@ -58,7 +58,7 @@ class GetUser(APIView):
             'X-API-Key': settings.API_KEY,
         })
         response_json = json.loads(response.text)
-        return HttpResponse(response.text)
+        return Response(response_json)
 
 
 class GetAccount(APIView):
@@ -74,7 +74,7 @@ class GetAccount(APIView):
             'X-API-Key': settings.API_KEY,
         })
         response_json = json.loads(response.text)
-        return HttpResponse(response.text)
+        return Response(response_json)
 
 
 class GetProvidersList(APIView):
@@ -90,4 +90,4 @@ class GetProvidersList(APIView):
             'X-API-Key': settings.API_KEY,
         })
         response_json = json.loads(response.text)
-        return HttpResponse(response.text)
+        return Response(response_json)

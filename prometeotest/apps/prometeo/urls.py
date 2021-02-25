@@ -6,10 +6,14 @@ Prometeo app URLs
 from django.urls import include, path
 
 # Views
-from .views import *
+from .views import (
+    LoginTemplateView,
+    AccountTemplateView,
+)
 
 
 # {{doamin}}/<page>
 urlpatterns = [
     path('login/', LoginTemplateView.as_view(), name='login'),
+    path('account/', AccountTemplateView.as_view(), name='account'),
 ]
