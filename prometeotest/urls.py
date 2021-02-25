@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('prometeotest.apps.prometeo.urls', 'prometeo'), namespace='prometeo')),
     path('api/', include(('prometeotest.apps.api.urls', 'api'), namespace='api')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

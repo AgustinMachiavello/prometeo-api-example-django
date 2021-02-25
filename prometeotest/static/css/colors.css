@@ -1,0 +1,29 @@
+:root {
+    --obscure-red: #A90011;
+    --red: #D11D27;
+    --light-red: #E53C38;
+    --plain-white: #FFFFFF;
+    --plain-black: #000000;
+    --beige: #FFFAEF;
+    --light-brown: #FBEBD8;
+}
+
+.bg-obscure-red {
+    background-color: var(--obscure-red);
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+
+.bg-light-red {
+    background-color: var(--light-red);
+}
+
+.bg-obscure-red {
+    background-color: var(--obscure-red);
+}
+
+.bg-light-brown {
+    background-color: var(--light-brown);
+}

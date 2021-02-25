@@ -1,0 +1,13 @@
+.bg-abstract-1 {
+    background-image: url('../img/prometeo-login-background-desktop.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-abstract-2 {
+    background-image: url('../img/prometeo-login-info-animation.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

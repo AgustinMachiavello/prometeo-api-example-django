@@ -1,0 +1,76 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Start Font Sizes */
+.font-large {
+    font-size: 5rem;
+}
+
+.font-semi-large {
+    font-size: 3.5rem;
+}
+
+.font-medium {
+    font-size: 2.5rem;
+}
+
+.font-small {
+    font-size: 1.5rem;
+}
+
+.font-extra-small {
+    font-size: 1rem;
+}
+
+
+/* Start Font Families */
+.font-f-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.font-f-work-sans {
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Start Font Weights */
+.font-extra-light {
+    font-weight: 200;
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-regular {
+    font-weight: 400;
+}
+
+.font-semi-bold {
+    font-weight: 500;
+}
+
+.font-bold {
+    font-weight: 600;
+}
+
+/* Responsive */
+
+/* xs and down */
+@media screen and (max-width: 576px) {
+    .font-large {
+        font-size: 3rem;
+    }
+
+    .font-semi-large {
+        font-size: 2rem;
+    }
+
+    .font-medium {
+        font-size: 1.5rem;
+    }
+    
+    .font-small {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,17 @@
+.btn-light-red {
+    color: var(--plain-white);
+    background-color: var(--light-red);
+}
+
+.btn-light-red {
+    color: var(--plain-white);
+    background: var(--light-red);
+    transition: all 0.3s ease;
+}
+
+.btn-light-red:hover {
+    color: var(--plain-black);
+    background: var(--light-brown);
+    padding-right: 1.1rem;
+    padding-left: 1.1rem;
+}
