@@ -40,12 +40,6 @@ class LoginAPIView(APIView):
     """
 
     def post(self, request, format=None):
-        try:
-            # TODO You'll see this TRY-EXCEPT repeated. I tried to make it a function but the APIView would ignore it
-            # I don't know why yet, I'll try to fix this with more investigation.
-            request.session['session_key']
-        except KeyError as e:
-            return redirect(reverse('prometeo:login'))
 
         response = requests.post(settings.API_BANK_HOST + '/login/', data={
             'provider': request.POST.get('provider'),
