@@ -1,1 +1,1 @@
-web: gunicorn sistemagepian.wsgi --log-file -
+web: gunicorn prometeotest.wsgi --log-file -
