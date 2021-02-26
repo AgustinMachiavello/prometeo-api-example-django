@@ -3,7 +3,8 @@ API Views
 """
 
 # DJango
-from django.http.response import HttpResponse, JsonResponse
+from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, redirect, reverse
 
 # Django REST Framework
 
@@ -28,8 +29,9 @@ import datetime
 
 def get_or_retrieve_session_key():
     """
-    In case 
+    In case the session key is no longer valid, we can request again a new one
     """
+    # TODO
     return 
 
 class LoginAPIView(APIView):
@@ -38,6 +40,13 @@ class LoginAPIView(APIView):
     """
 
     def post(self, request, format=None):
+        try:
+            # TODO You'll see this TRY-EXCEPT repeated. I tried to make it a function but the APIView would ignore it
+            # I don't know why yet, I'll try to fix this with more investigation.
+            request.session['session_key']
+        except KeyError as e:
+            return redirect(reverse('prometeo:login'))
+
         response = requests.post(settings.API_BANK_HOST + '/login/', data={
             'provider': request.POST.get('provider'),
             'username': request.POST.get('username'),
@@ -49,6 +58,7 @@ class LoginAPIView(APIView):
         print(response_json)
         if is_request_success(response_json):
             request.session['session_key'] = response_json['key'] # assign Prometeo API session key to Django secured session token
+
         return Response(response_json)
 
 
@@ -58,7 +68,13 @@ class GetUser(APIView):
     """
 
     def get(self, request, format=None):
-        # TODO Check if ther is a session key before fetching
+        try:
+            # TODO You'll see this TRY-EXCEPT repeated. I tried to make it a function but the APIView would ignore it
+            # I don't know why yet, I'll try to fix this with more investigation.
+            request.session['session_key']
+        except KeyError as e:
+            return redirect(reverse('prometeo:login'))
+
         response = requests.get(settings.API_BANK_HOST + '/info/', params={
             'key': request.session['session_key'],
         }, headers={
@@ -74,13 +90,20 @@ class GetAccount(APIView):
     """
 
     def get(self, request, format=None):
-        # TODO Check if ther is a session key before fetching
+        try:
+            # TODO You'll see this TRY-EXCEPT repeated. I tried to make it a function but the APIView would ignore it
+            # I don't know why yet, I'll try to fix this with more investigation.
+            request.session['session_key']
+        except KeyError as e:
+            return redirect(reverse('prometeo:login'))
+
         response = requests.get(settings.API_BANK_HOST + '/account/', params={
             'key': request.session['session_key'],
         }, headers={
             'X-API-Key': settings.API_KEY,
         })
         response_json = json.loads(response.text)
+
         return Response(response_json)
 
 
@@ -90,7 +113,6 @@ class GetProvidersList(APIView):
     """
 
     def get(self, request, format=None):
-        # TODO Check if ther is a session key before fetching
         response = requests.get(settings.API_BANK_HOST + '/provider/', 
             headers={
             'X-API-Key': settings.API_KEY,
@@ -105,7 +127,13 @@ class GetMovementsList(APIView):
     """
 
     def get(self, request, *args, **kwargs):
-        # TODO Check if ther is a session key before fetching
+        try:
+            # TODO You'll see this TRY-EXCEPT repeated. I tried to make it a function but the APIView would ignore it
+            # I don't know why yet, I'll try to fix this with more investigation.
+            request.session['session_key']
+        except KeyError as e:
+            return redirect(reverse('prometeo:login'))
+
         account_number = self.kwargs.get('account', None)
         account_currency = self.kwargs.get('currency', None)
 

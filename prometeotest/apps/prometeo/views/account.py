@@ -4,7 +4,7 @@ Account page
 
 # Django
 from prometeotest.apps.api.views.api import GetAccount, GetMovementsList, GetUser
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, reverse
 
@@ -24,6 +24,13 @@ class AccountTemplateView(TemplateView):
     movements_limit = 5
 
     def get(self, request):
+        try:
+            # TODO You'll see this TRY-EXCEPT repeated. I tried to make it a function but the APIView would ignore it
+            # I don't know why yet, I'll try to fix this with more investigation.
+            request.session['session_key']
+        except KeyError as e:
+            return redirect(reverse('prometeo:login'))
+            
         request_errors = []
         user_request =  GetUser.as_view()(request).data
         account_request =  GetAccount.as_view()(request).data
@@ -43,14 +50,15 @@ class AccountTemplateView(TemplateView):
             try:
                 movements_account = GetMovementsList.as_view()(request).data
                 if len(movements_account['movements']) < self.movements_limit:
-                    movements = movements_account['movements'][:len(movements_account['movements'])] # TODO Limit movements
+                    movements = movements_account['movements'][:len(movements_account['movements'])] # Limit movements
                 else:
                     movements = movements_account['movements'][:self.movements_limit]
                 movements_list.append(movements)
             except KeyError as e:
                 print(e)
                 continue
-        # TODO if request_errors length > 1 do something...
+        if len(self.context['request_errors']) > 1:
+            return reverse(reverse('prometeo:login'))
         self.context['movements'] = movements_list
         return render(request, self.template_name, self.context)
     
