@@ -12,6 +12,7 @@ from .views.api import (
     GetUser,
     GetAccount,
     GetProvidersList,
+    GetMovementsList,
 )
 
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path('info/', GetUser.as_view(), name='get_user'),
     path('account/', GetAccount.as_view(), name='get_account'),
     path('provider/', GetProvidersList.as_view(), name='get_provider_list'),
+    path('movements/<int:account>/<str:currency>/', GetMovementsList.as_view(), name='get_movements_list'),
 ]

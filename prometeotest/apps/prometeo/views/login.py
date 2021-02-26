@@ -29,7 +29,7 @@ class LoginTemplateView(TemplateView):
     context = {}
 
     def get(self, request):
-        self.context['request_errors'] = None # Clean request errors
+        self.context['request_errors'] = None # Clear request errors
         self.context['form'] = LoginForm()
         if request.session.get('session_key', None):
             pass
@@ -62,4 +62,4 @@ class LoginTemplateView(TemplateView):
             else:
                 request.session['request_errors'] = [get_request_status_message(login_request),]
         self.context['form'] = form
-        return redirect(reverse('prometeo:login')) # TODO is POST gets an error, privers list disappears
+        return redirect(reverse('prometeo:login'))

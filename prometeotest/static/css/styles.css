@@ -16,6 +16,40 @@
     background-color: unset;
 }*/
 
+/*
+.login-page-container {
+    height: 100vh !important;
+}
+
+.login-page-container .login-form-container {
+    height: 100% !important;
+}*/
+
+
+.account-page__info {
+    border-radius: 20px 20px 0px 0px;
+}
+
+.account-page__info__account {
+    border-radius: 20px;
+}
+
+.account-page__movements {
+    border-radius: 20px;
+}
+
+.account-page__movements .col {
+    padding: 0.5rem;
+}
+
+.movement-wrapper {
+    border-radius: 15px;
+}
+
+.movement-wrapper i {
+
+}
+
 /* Responsive */
 
 /* xs and down */
@@ -40,7 +74,7 @@
 
 /* md and up*/
 @media screen and (min-width: 768px) {
-
+    
 }
 
 /* lg and up*/
@@ -50,4 +84,35 @@
 
 /* xl and up*/
 @media screen and (min-width: 1200px) {
+}
+
+
+/* Landscape responsive */
+@media only screen and (orientation: landscape) {
+    /* xs and down */
+    @media screen and (max-width: 576px) {
+    }
+
+    /* sm and up*/
+    @media screen and (min-width: 576px) {
+
+    }
+
+    /* md and up*/
+    @media screen and (min-width: 768px) {
+        /*
+        .login-page-container {
+            height: unset !important;
+        }*/
+        
+    }
+
+    /* lg and up*/
+    @media screen and (min-width: 992px) {
+        
+    }
+
+    /* xl and up*/
+    @media screen and (min-width: 1200px) {
+    }
 }

@@ -1,11 +1,15 @@
 :root {
     --obscure-red: #A90011;
     --red: #D11D27;
+    --ultra-light-red: #E57A77;
     --light-red: #E53C38;
+    --palid-red: #e74c3c;
     --plain-white: #FFFFFF;
     --plain-black: #000000;
     --beige: #FFFAEF;
     --light-brown: #FBEBD8;
+    --light-blue: #585DDC;
+    --light-green: #A8B875;
 }
 
 .bg-obscure-red {
@@ -20,10 +24,34 @@
     background-color: var(--light-red);
 }
 
-.bg-obscure-red {
-    background-color: var(--obscure-red);
+.bg-ultra-light-red {
+    background-color: var(--ultra-light-red);
+}
+
+.bg-palid-red {
+    background-color: var(--palid-red);
 }
 
 .bg-light-brown {
     background-color: var(--light-brown);
+}
+
+.bg-beige {
+    background-color: var(--beige);
+}
+
+.bg-light-blue {
+    background-color: var(--light-blue);
+}
+
+.bg-light-green {
+    background-color: var(--light-green);
+}
+
+.border-light-green {
+    border: 1px solid var(--light-green) !important;
+}
+
+.border-light-red {
+    border: 1px solid var(--palid-red) !important;
 }
