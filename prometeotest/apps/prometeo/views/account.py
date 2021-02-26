@@ -57,8 +57,11 @@ class AccountTemplateView(TemplateView):
             except KeyError as e:
                 print(e)
                 continue
-        if len(self.context['request_errors']) > 1:
-            return reverse(reverse('prometeo:login'))
+        try:
+            if len(self.context['request_errors']) > 1:
+                return reverse(reverse('prometeo:login'))
+        except KeyError:
+            pass
         self.context['movements'] = movements_list
         return render(request, self.template_name, self.context)
     
