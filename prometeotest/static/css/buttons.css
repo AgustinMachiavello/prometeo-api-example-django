@@ -1,22 +1,15 @@
 .btn-light-red {
     color: var(--plain-white);
-    background-color: var(--light-red);
-}
-
-.btn-light-red {
-    color: var(--plain-white);
     background: var(--light-red);
     transition: all 0.3s ease;
 }
 
-.btn-light-red:hover {
-    color: var(--plain-black);
-    background: var(--light-brown);
-    padding-right: 1.1rem;
-    padding-left: 1.1rem;
+form button {
+    display: block;
+    width: 100%;
 }
 
-form button {
+form a.btn {
     display: block;
     width: 100%;
 }
@@ -44,12 +37,28 @@ form button+button {
 
 /* lg and up*/
 @media screen and (min-width: 992px) {
+    .btn-light-red:hover {
+        color: var(--plain-black);
+        background: var(--light-brown);
+        padding-right: 1.1rem;
+        padding-left: 1.1rem;
+    }
+
     form button {
         display: inline;
         width: unset;
     }
     
     form button+button {
+        margin-top: unset;
+    }
+
+    form a.btn {
+        display: inline;
+        width: unset;
+    }
+
+    form a.btn+.btn {
         margin-top: unset;
     }
 }

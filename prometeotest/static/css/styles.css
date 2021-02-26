@@ -1,10 +1,22 @@
+.row {
+    margin: 0px;
+}
 
+.col {
+    padding: 0px;
+}
 
 /* Responsive */
 
 /* xs and down */
 @media screen and (max-width: 576px) {
+    .row {
+        overflow-x: hidden;
+    }
 
+    .login-form-container {
+        border-radius: unset !important;
+    }
 }
 
 /* sm and up*/

@@ -33,9 +33,9 @@ class LoginAPIView(APIView):
 
     def post(self, request, format=None):
         response = requests.post(settings.API_BANK_HOST + '/login/', data={
-            'provider': 'test', # TODO
-            'username': '12345', # TODO
-            'password': 'asdfg', # TODO
+            'provider': request.POST.get('provider'),
+            'username': request.POST.get('username'),
+            'password': request.POST.get('pasword'),
         }, headers={
             'X-API-Key': settings.API_KEY,
         })

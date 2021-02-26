@@ -54,6 +54,20 @@
     font-weight: 600;
 }
 
+
+/* Start Text Color */
+.text-light-red {
+    color: var(--light-red);
+}
+
+.text-red {
+    color: var(--red);
+}
+
+.text-obscure-red {
+    color: var(--obscure-red);
+}
+
 /* Responsive */
 
 /* xs and down */
