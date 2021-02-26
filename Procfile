@@ -1,0 +1,1 @@
+web: gunicorn sistemagepian.wsgi --log-file -
