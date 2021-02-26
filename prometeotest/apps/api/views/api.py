@@ -19,6 +19,9 @@ import json
 # Settings
 from django.conf import settings
 
+# Helpers
+from ...prometeo.helpers.api import is_request_success, get_request_status
+
 
 def get_or_retrieve_session_key():
     """
@@ -35,13 +38,14 @@ class LoginAPIView(APIView):
         response = requests.post(settings.API_BANK_HOST + '/login/', data={
             'provider': request.POST.get('provider'),
             'username': request.POST.get('username'),
-            'password': request.POST.get('pasword'),
+            'password': request.POST.get('password'),
         }, headers={
             'X-API-Key': settings.API_KEY,
         })
         response_json = json.loads(response.text)
-        # TODO if response.text['status'] ==  ....
-        request.session['session_key'] = response_json['key'] # TODO 
+        print(response_json)
+        if is_request_success(response_json):
+            request.session['session_key'] = response_json['key'] # assign Prometeo API session key to Django secured session token
         return Response(response_json)
 
 

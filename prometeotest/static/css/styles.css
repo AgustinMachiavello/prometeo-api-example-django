@@ -6,6 +6,16 @@
     padding: 0px;
 }
 
+.alert {
+    padding: 0.1rem 1rem;
+}
+
+/*
+.alert.alert-danger {
+    color: var(--red);
+    background-color: unset;
+}*/
+
 /* Responsive */
 
 /* xs and down */
@@ -16,6 +26,10 @@
 
     .login-form-container {
         border-radius: unset !important;
+    }
+
+    .alert {
+        text-align: center;
     }
 }
 

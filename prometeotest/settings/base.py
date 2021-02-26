@@ -10,6 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+"""
+PROMETEO API EXAMPLE 
+
+- Author: Agustin Machiavello
+- Contact: agmachiavello@gmail.com
+
+MIT License
+
+Feel free to use this code :)
+
+"""
+
 import os
 import environ
 

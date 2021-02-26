@@ -8,7 +8,7 @@
     <div class="col d-flex flex-column justify-content-center">
       <!-- Logo and title -->
       <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-end px-4 pt-4">
-        <img class="mb-5 mb-sm-0" src="{% static 'img/prometeo-logo-1.svg' %}" alt="prometeo minimalistic logo" height="100px">
+        <img class="mb-2 mb-sm-0" src="{% static 'img/prometeo-logo-1.svg' %}" alt="prometeo minimalistic logo" height="100px">
         <h1 class="font-semi-large font-bold d-none d-md-block">Prometeo</h1>
       </div>
       <!-- Form -->
@@ -17,8 +17,13 @@
         <div class="form-group">
           <label for="providers">Bank</label>
           <select name="provider" class="form-control" id="providers">
-            {% for provider in providers|get_key:'providers' %}
-              <option value="{{ provider|get_key:'code' }}">{{ provider|get_key:'name' }}</option>
+            <!-- # TODO This can be optimized -->
+            {% for provider in providers %}
+              {% if provider|get_key:'code' == last_provider  %}
+                <option value="{{ provider|get_key:'code' }}" selected>{{ provider|get_key:'name' }}</option>
+              {% else %}
+                <option value="{{ provider|get_key:'code' }}">{{ provider|get_key:'name' }}</option>
+              {% endif %}
             {% endfor %}
           </select>
         </div>
@@ -31,8 +36,13 @@
           <label class="" for="password">Password</label>
           <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
         </div>
+        {% for error in request_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
         {% for error in form.errors %}
-            <div class="alert alert-danger py-1">
+            <div class="alert alert-danger">
                 <strong>{{ error|escape }}</strong>
             </div>
         {% endfor %}
