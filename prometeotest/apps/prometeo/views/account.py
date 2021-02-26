@@ -21,7 +21,7 @@ class AccountTemplateView(TemplateView):
 
     template_name = 'pages/account.html'
     context = {}
-    movements_limit = 10
+    movements_limit = 5
 
     def get(self, request):
         request_errors = []
@@ -42,7 +42,10 @@ class AccountTemplateView(TemplateView):
             # TODO this can be optimized or move to another page
             try:
                 movements_account = GetMovementsList.as_view()(request).data
-                movements = movements_account['movements'][:self.movements_limit] # TODO Limit movements 
+                if len(movements_account['movements']) < self.movements_limit:
+                    movements = movements_account['movements'][:len(movements_account['movements'])] # TODO Limit movements
+                else:
+                    movements = movements_account['movements'][:self.movements_limit]
                 movements_list.append(movements)
             except KeyError as e:
                 print(e)

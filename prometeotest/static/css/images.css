@@ -19,6 +19,13 @@
     background-size: cover;
 }
 
+.bg-abstract-4 {
+    background-image: url('../img/prometeo-account-top-background-desktop.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 /* Responsive */
 

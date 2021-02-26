@@ -10,6 +10,7 @@
     --light-brown: #FBEBD8;
     --light-blue: #585DDC;
     --light-green: #A8B875;
+    --ultra-light-green: #A1CB92;
 }
 
 .bg-obscure-red {
@@ -46,6 +47,10 @@
 
 .bg-light-green {
     background-color: var(--light-green);
+}
+
+.bg-ultra-light-green {
+    background-color: var(--ultra-light-green);
 }
 
 .border-light-green {

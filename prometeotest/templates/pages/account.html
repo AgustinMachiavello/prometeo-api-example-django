@@ -3,80 +3,91 @@
 {% load custom_filters %}
 
 {% block content %}
-<div class="account-page-container container-fluid p-0 bg-light-red">
-    <div class="row align-items-center pl-1 pr-5 py-0 bg-light-red text-white">
+<div class="account-page-container container-fluid p-0">
+    <!-- User info -->
+    <div class="row align-items-center pl-1 pl-lg-2 pr-5 py-0 bg-light-red text-white bg-abstract-4">
         <div class="col-10 balance-wrapper">
-            <span class="font-bold font-medium">{{ user_info|get_key:'name' }}</span>
+            <span class="font-bold font-medium text-white">{{ user_info|get_key:'name' }}</span>
             <br>
             <span class="font-light font-small">{{ user_info|get_key:'email' }} · {{ user_info|get_key:'document' }}</span>
         </div>
         <div class="col profile-picture-wrapper">
             <div class="d-flex justify-content-center">
-                <img class="m-5 rounded-circle bg-white shadow" src="{% static 'img/prometeo-logo-1.svg' %}" alt="logo minimalista prometeo" height="50px">
+                <img class="m-5 rounded-circle bg-white shadow" src="{% static 'img/prometeo-profile-picture-1.svg' %}" alt="logo minimalista prometeo" height="50px">
             </div>
         </div>
     </div>
-    <div class="account-page__info bg-white p-3">
-        <h1 class="font-medium font-bold py-3">My accounts</h1>
-        {% if accounts|length == 0 %}
-            <h2 class="font-medium font-light">No accounts associated :(</h2>
-        {% endif %}
-        {% for account in accounts %}
-            <div class="row px-2 py-4  mb-3 bg-ultra-light-red account-page__info__account shadow-sm text-white">
-                <div class="col-8">
-                    <p class="">
-                        <span class="font-bold font-medium">${{ account|get_key:'currency' }} {{ account|get_key:'balance' }}</span>
-                        <br>
-                        <span class="font-regular font-small mb-4">****{{ account|get_key:'number'|slice:"4:" }}</span>
-                    </p>
-                    <p class="mt-0">
-                        <span class="font-light font-small text-uppercase">
-                            NAME: {{ account|get_key:'name' }}
-                        </span>
-                        {% if account|get_key:'branch' %}
-                            <br>
-                            <span class="font-light font-small">
-                                {{ account|get_key:'branch' }}
-                            </span>
-                        {% endif %}
-                    </p>
-                </div>
-                <div class="col-4 d-flex align-items-center justify-content-center">
-                    <div class="">
-                        <img class="rounded-circle bg-white shadow" src="{% static 'img/prometeo-logo-1.svg' %}" alt="logo minimalista prometeo" height="50px">
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="bg-white">
-        <div class="account-page__movements bg-beige p-3">
-            <h2 class="font-medium font-bold py-3">Year's last movements</h2>
-            <div class="row flex-wrap">
-                {% if movements|length == 0 %}
-                    <h2 class="font-medium font-light">No movements made :(</h2>
+    <div class="row p-0 pb-lg-5 rounded">
+        <div class="col-12 col-lg-5">
+            <!-- My acounts -->
+            <div class="account-page__info p-3">
+                <h1 class="font-medium font-semi-bold py-3">My accounts</h1>
+                {% if accounts|length == 0 %}
+                    <h2 class="font-medium font-light">No accounts associated :(</h2>
                 {% endif %}
-                {% for account_movement in movements %}
-                    {% for movement in account_movement %}
-                        <!-- # TODO tap on movement to see details -->
-                        <div class="col col-6">
-                            <div class="movement-wrapper p-4 d-flex flex-column align-items-center justify-content-center bg-white shadow-sm border {% if movement|get_key:'debit' %}border-light-green{% else %}border-light-red{% endif %}">
-                                {% if movement|get_key:'debit' %}
-                                    <i class="bi bi-arrow-bar-down"></i>
-                                    <span class="font-bold font-medium">${{ movement|get_key:'debit' }}</span>
+                {% for account in accounts %}
+                    <div class="row px-2 py-4  mb-3 bg-ultra-light-red account-page__info__account shadow-sm text-white">
+                        <div class="col-8">
+                            <p class="">
+                                <span class="font-bold font-medium">${{ account|get_key:'currency' }} {{ account|get_key:'balance' }}</span>
+                                <br>
+                                <span class="font-regular font-small mb-4">****{{ account|get_key:'number'|slice:"4:" }}</span>
+                            </p>
+                            <p class="mt-0">
+                                <span class="font-light font-small text-uppercase">
+                                    · {{ account|get_key:'name' }}
+                                </span>
+                                {% if account|get_key:'branch' %}
+                                    <br>
+                                    <span class="font-light font-small">
+                                        {{ account|get_key:'branch' }}
+                                    </span>
                                 {% endif %}
-                                {% if movement|get_key:'credit' %}
-                                    <i class="bi bi-arrow-bar-up"></i>
-                                    <span class="font-bold font-medium">${{ movement|get_key:'credit' }}</span>
-                                {% endif %}
-                                <span class="font-small font-semi-bold">{{ movement|get_key:'date' }}</span>
-                                <span class="font-small font-light text-center d-none">{{ movement|get_key:'detail'|slice:"5:" }}</span>
+                            </p>
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            <div class="">
+                                <img class="rounded-circle bg-white shadow" src="{% static 'img/prometeo-logo-1.svg' %}" alt="logo minimalista prometeo" height="50px">
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
                 {% endfor %}
             </div>
         </div>
+        <div class="col-12 col-lg-7">
+            <!-- Last movements -->
+            <div class="account-page__movements">
+                <div class="account-page__movements p-3">
+                    <h2 class="font-medium font-semi-bold py-3">Last movements</h2>
+                    <div class="row flex-wrap m-n2">
+                        {% if movements|length == 0 %}
+                            <h2 class="font-medium font-light">No movements made :(</h2>
+                        {% endif %}
+                        {% for account_movement in movements %}
+                            {% for movement in account_movement %}
+                                <!-- # TODO tap on movement to see details -->
+                                <div class="col col-6">
+                                    <div class="movement-wrapper p-4 d-flex flex-column align-items-center justify-content-center shadow-sm border bg-white {% if movement|get_key:'debit' %}bg-ultra-light-green-REMOVE border-light-green{% else %}bg-light-red-REMOVE border-light-red{% endif %}">
+                                        {% if movement|get_key:'debit' %}
+                                            <i class="bi bi-arrow-bar-down"></i>
+                                            <span class="font-bold font-medium">${{ movement|get_key:'debit' }}</span>
+                                        {% endif %}
+                                        {% if movement|get_key:'credit' %}
+                                            <i class="bi bi-arrow-bar-up"></i>
+                                            <span class="font-bold font-medium">${{ movement|get_key:'credit' }}</span>
+                                        {% endif %}
+                                        <span class="font-small font-semi-bold">{{ movement|get_key:'date' }}</span>
+                                        <span class="font-small font-light text-center d-none">{{ movement|get_key:'detail'|slice:"5:" }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 </div>
 {% endblock %}
